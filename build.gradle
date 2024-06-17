@@ -55,7 +55,11 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok:1.18.20'
 
 	// https://mvnrepository.com/artifact/org.hibernate/hibernate-annotations
-	implementation 'org.hibernate:hibernate-annotations:3.5.6-Final'
+	//implementation 'org.hibernate:hibernate-annotations:3.5.6-Final'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	runtimeOnly 'com.h2database:h2'
 
 	// Testing
 	testImplementation'org.springframework.boot:spring-boot-starter-test'

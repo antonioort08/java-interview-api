@@ -7,8 +7,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.Digits;
+import java.math.BigDecimal;
 
 @Data
 @Table
@@ -19,6 +27,19 @@ import javax.persistence.Table;
 @Builder(toBuilder=true)
 public class Widget {
 
+  @Id
+  @NotNull
+  @Size(min = 3, max = 100)
+  @Column(unique = true)
   private String name;
 
+  @NotNull
+  @Size(min = 5, max = 1000)
+  private String description;
+
+  @NotNull
+  @DecimalMin(value = "1.00")
+  @DecimalMax(value = "20000.00")
+  @Digits(integer = 5, fraction = 2)
+  private BigDecimal price;
 }
